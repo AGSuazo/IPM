@@ -1,0 +1,778 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+/* Variables CSS para consistencia institucional */
+:root {
+    /* Paleta de colores */
+    --primary-color: #138c1f; /* Verde */
+    --secondary-color: #e0f7fa; /* Azul Claro/Cian */
+    --accent-color: #ffc107; /* Amarillo Brillante */
+    --text-color: #333; /* Texto principal oscuro */
+    --light-text-color: #fff; /* Texto claro para fondos oscuros */
+    --border-color: #ddd; /* Borde gris claro */
+    --bg-color-light: #f8f9fa; /* Fondo muy claro */
+    --bg-color-dark: #343a40; /* Fondo oscuro */
+
+    /* Tipografía */
+    --font-heading: 'Dancing Script', sans-serif;
+    --font-body: 'Roboto Mono', sans-serif;
+
+    /* Espaciado */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+
+    /* Tamaños */
+    --header-height: 90px; /* MODIFICADO: Altura ajustada para un logo más grande */
+    --border-radius: 8px;
+
+    /* Puntos de ruptura para responsividad */
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+}
+
+/* Estilos Globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave para anclas */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color-light);
+    margin-top: var(--header-height); /* MODIFICADO: Espacio para el header fijo */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de las imágenes */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Header (Banner Superior) */
+.main-header {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: var(--header-height); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-header .container {
+    display: flex;
+    align-items: center; /* Centra verticalmente el logo, nav y hamburguesa */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    height: 100%; /* Asegura que ocupe toda la altura del header */
+    max-width: 1200px; /* Mantener */
+    margin: 0 auto; /* Mantener */
+    padding: 0 var(--spacing-md); /* Mantener */
+}
+
+.main-header .logo {
+    margin-right: var(--spacing-lg); /* NUEVO: Espacio a la derecha del logo */
+    display: flex; /* Añadido para mejor control del img */
+    align-items: center; /* Centra el logo dentro de su propio contenedor flex */
+}
+
+.main-header .logo img {
+    height: 70px; /* MODIFICADO: Aumenta el tamaño del logo */
+    /* filter: brightness(0) invert(1); */ /* COMENTADO: Si tu logo ya tiene color y no lo quieres blanco */
+}
+
+.main-nav {
+    flex-grow: 1; /* MODIFICADO: Permite que el menú de navegación ocupe el espacio restante */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0; /* Asegura que no haya padding extra */
+    margin: 0; /* Asegura que no haya margin extra */
+    justify-content: flex-start; /* Alinea los elementos del menú a la izquierda */
+}
+
+.main-nav ul li {
+    margin-left: var(--spacing-md); /* MODIFICADO: Espacio entre los elementos del menú */
+}
+
+.main-nav ul li:first-child {
+    margin-left: 0; /* NUEVO: El primer elemento no necesita margen a la izquierda */
+}
+
+.main-nav ul li a {
+    color: var(--light-text-color);
+    font-weight: 600;
+    padding: var(--spacing-sm) 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* Menú hamburguesa (oculto por defecto en desktop) */
+.hamburger {
+    display: none; /* Sigue oculto en desktop */
+    flex-direction: column;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    border: none;
+    background: none;
+    padding: var(--spacing-xs);
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--light-text-color);
+    margin-bottom: 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el main content de cada página */
+main {
+    padding: var(--spacing-lg) 0;
+}
+
+section {
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Hero Section (Carrusel) - Solo en Inicio */
+.hero-section {
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--bg-color-dark);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 500px;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--light-text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    max-width: 70%;
+}
+
+.carousel-caption h3 {
+    color: var(--light-text-color);
+    margin-bottom: var(--spacing-xs);
+}
+.carousel-caption p {
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--light-text-color);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev { left: var(--spacing-md); }
+.carousel-next { right: var(--spacing-md); }
+
+.carousel-dots {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: var(--light-text-color);
+    transform: scale(1.2);
+}
+
+.carousel-play-pause {
+    position: absolute;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--light-text-color);
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.carousel-play-pause:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Secciones generales de contenido */
+.hero-content {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    background-color: var(--secondary-color);
+    margin-top: -var(--header-height);
+    padding-top: var(--header-height);
+}
+
+/* Sección de Noticias */
+.news-grid, .gallery-grid, .teachers-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.news-card, .teacher-card {
+    background-color: var(--light-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover, .teacher-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img, .teacher-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-card-content, .teacher-card-content {
+    padding: var(--spacing-md);
+}
+
+.news-card-content h3, .teacher-card-content h3 {
+    font-size: 1.3em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+.news-card-content p {
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.news-card-content a, .teacher-card-content a {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Galería */
+.gallery-item {
+    background-color: var(--bg-color-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item p {
+    padding: var(--spacing-sm);
+    font-size: 0.9em;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Docentes */
+.teacher-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 auto var(--spacing-sm);
+    display: block;
+    border: 3px solid var(--primary-color);
+}
+
+.teacher-card-content {
+    text-align: center;
+}
+
+.teacher-card-content h3 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.teacher-card-content p {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* Oferta Académica */
+.academic-offer-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.academic-offer-item {
+    background-color: var(--light-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.academic-offer-item h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+}
+
+.academic-offer-item p {
+    font-size: 0.95em;
+}
+
+.plan-image-container {
+    display: flex;
+    flex-direction: row;        /* Horizontal en desktop */
+    flex-wrap: wrap;            /* Permite que las imágenes salten a la siguiente línea si no caben */
+    justify-content: space-around; /* Distribuye las imágenes con espacio a su alrededor */
+    align-items: flex-start;    /* Alinea las imágenes desde la parte superior */
+    gap: var(--spacing-lg);     /* Espacio entre cada plan de año */
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    width: 100%;
+}
+
+.plan-image-container figure {
+    margin: 0;
+    padding: 0;
+    
+    flex: 1 1 250px; /* flex-grow: 1, flex-shrink: 1, flex-basis: 250px.
+                       Esto les da un tamaño inicial de 250px, les permite crecer/encoger. */
+    max-width: 280px; /* Ancho máximo absoluto para cada imagen (ajusta si es necesario) */
+    min-width: 200px; /* Asegura que no se hagan demasiado pequeñas en pantallas intermedias */
+    width: 100%;      /* Para que ocupen el 100% del espacio disponible si es menor que min-width/max-width */
+    
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: var(--light-text-color);
+    text-align: center;
+}
+
+.plan-image-container figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.plan-image-container figure figcaption {
+    padding: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Formulario de Contacto */
+.contact-form {
+    background-color: var(--light-text-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: var(--spacing-lg) auto;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1em;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color), 0.2);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.form-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    display: none;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--bg-color-dark);
+    color: var(--light-text-color);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.main-footer .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.main-footer .footer-nav ul li a {
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-links {
+    margin-top: var(--spacing-md);
+}
+
+.social-links a {
+    color: var(--light-text-color);
+    font-size: 1.5em;
+    margin: 0 var(--spacing-sm);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Estilos de accesibilidad (ejemplo de focus states) */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+
+/* --- Responsive Design --- */
+
+/* Tablets y Dispositivos Móviles Grandes (min-width: 768px) */
+@media (min-width: var(--breakpoint-tablet)) {
+    .main-footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .main-footer .footer-nav ul {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Dispositivos Móviles (max-width: 767px) */
+@media (max-width: calc(var(--breakpoint-tablet) - 1px)) {
+    .main-nav {
+        position: absolute;
+        top: var(--header-height); /* MODIFICADO: Utiliza la nueva altura del header */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-out;
+    }
+
+    .main-nav.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: var(--spacing-md) 0;
+    }
+
+    .main-nav ul li {
+        margin: var(--spacing-sm) 0;
+        width: 100%;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .main-nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Animación del hamburguesa a "X" */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.75em; }
+
+    /* MODIFICADO: Ajustes en el header para móvil */
+    .main-header .container {
+        justify-content: space-between; /* Logo a la izquierda, hamburger a la derecha */
+        gap: var(--spacing-sm);
+    }
+    .main-header .logo {
+        margin-right: 0; /* Anula el margen del logo en móvil */
+    }
+    .main-header .logo img {
+        height: 60px; /* Tamaño ligeramente más pequeño para móvil */
+    }
+    /* El main-nav ya tiene display: none por defecto en móvil */
+
+
+    .carousel-caption {
+        font-size: 0.9em;
+        left: var(--spacing-sm);
+        bottom: var(--spacing-sm);
+        max-width: 90%;
+    }
+    .carousel-caption h3 {
+        font-size: 1.1em;
+    }
+    .carousel-caption p {
+        font-size: 0.8em;
+    }
+
+    .carousel-nav-btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 1.2em;
+    }
+    .carousel-prev { left: var(--spacing-sm); }
+    .carousel-next { right: var(--spacing-sm); }
+    .carousel-dots {
+        bottom: var(--spacing-sm);
+    }
+    .carousel-play-pause {
+        right: var(--spacing-sm);
+        bottom: var(--spacing-sm);
+        padding: var(--spacing-xs);
+        font-size: 0.9em;
+    }
+
+    /* AJUSTES PARA IMÁGENES DE PLAN DE ESTUDIO EN MÓVIL (MODIFICADOS) */
+    .plan-image-container {
+        flex-direction: column; /* Vuelve a apilar verticalmente en móvil */
+        gap: var(--spacing-md);
+    }
+    .plan-image-container figure {
+        max-width: 95%; /* Ocupar casi todo el ancho disponible en móvil */
+        min-width: unset; /* Anular min-width para móvil si se prefiere */
+        flex: 1 1 auto; /* Resetear flex para que se apilen naturalmente */
+    }
+}
+
+/* Ajustes adicionales para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+    .main-header .logo img {
+        height: 50px; /* Ajuste aún menor para pantallas muy pequeñas */
+    }
+    .contact-form {
+        padding: var(--spacing-md);
+    }
+    .main-footer .footer-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-links {
+        margin-top: var(--spacing-sm);
+    }
+}
